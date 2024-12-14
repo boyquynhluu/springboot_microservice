@@ -40,7 +40,7 @@ public class HttpManager {
      * @throws IOException
      * @throws SystemException
      */
-    public static Map<Integer, Object> requestMethodPOST(String url, Map<String, Object> header,
+    public static Map<Integer, Object> requestMethodPOSTWithRetry(String url, Map<String, Object> header,
             Map<String, Object> jsonMap) throws IOException, SystemException {
         Map<Integer, Object> map = new HashMap<>();
         HttpURLConnection con = null;
@@ -126,7 +126,7 @@ public class HttpManager {
      * @throws IOException
      * @throws SystemException
      */
-    public static Map<Integer, Object> requestMethodGet(String url, Map<String, Object> headers)
+    public static Map<Integer, Object> requestMethodGetWithRetry(String url, Map<String, Object> headers)
             throws IOException, SystemException {
         Map<Integer, Object> map = new HashMap<>();
         int retryCount = 0;

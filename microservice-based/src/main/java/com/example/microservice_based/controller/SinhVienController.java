@@ -65,7 +65,7 @@ public class SinhVienController {
         try {
             // Add body request
             ObjectMapper objectMapper = new ObjectMapper();
-            Map<Integer, Object> resData = HttpManager.requestMethodPOST(URL_LOGIN_INFO, header, reqBody);
+            Map<Integer, Object> resData = HttpManager.requestMethodPOSTWithRetry(URL_LOGIN_INFO, header, reqBody);
             if (!resData.isEmpty()) {
                 Map.Entry<Integer, Object> firstEntry = resData.entrySet().iterator().next();
                 // Get status code
@@ -102,7 +102,7 @@ public class SinhVienController {
             headerMap.put(HEADER_CONNECTION, KEEP_ALIVE);
             headerMap.put(HEADER_AUTHORIZATION, loginfo.getTokenType() + " " + loginfo.getAccessToken());
 
-            Map<Integer, Object> dataResMap = HttpManager.requestMethodGet(URL_GET_SINHVIENS, headerMap);
+            Map<Integer, Object> dataResMap = HttpManager.requestMethodGetWithRetry(URL_GET_SINHVIENS, headerMap);
 
             if (!dataResMap.isEmpty()) {
                 Map.Entry<Integer, Object> entryMap = dataResMap.entrySet().iterator().next();
